@@ -1,0 +1,125 @@
+.form {
+  inline-size: clamp(21.875rem, 16.3732rem + 23.4742vw, 37.5rem);
+
+  justify-self: center;
+}
+
+.form__legend {
+  margin-block: 2rem;
+
+  text-align: center;
+}
+
+.form__fieldset {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--form-gap);
+
+  border: none;
+}
+
+.form-input-container {
+  position: relative;
+}
+
+.form-input {
+  display: block;
+
+  inline-size: 100%;
+  block-size: 3rem;
+
+  padding: 1rem;
+
+  font-size: inherit;
+
+  border: 2px solid #000;
+  border-radius: .3rem;
+}
+
+.form-input:focus {
+  border-color: var(--accent-color);
+
+  outline: none;
+}
+
+.form-input__label {
+  position: absolute;
+  left: 5%;
+  top: 25%;
+
+  font-size: inherit;
+  font-weight: normal;
+  color: #444; 
+  
+  pointer-events: none;
+  
+  transition: 0.2s ease all;
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+.form-input:focus ~ .form-input__label,
+.form-input:not(:focus):not(:placeholder-shown) ~ .form-input__label {
+  top: -20%;
+
+  background-color: #fff;
+
+  font-size: medium;
+}
+
+.form-input:focus ~ .form-input__label {
+  color: var(--accent-color);
+}
+
+.form-input:not(:focus):valid ~ .form-input__label,
+.form-input:not(:focus):not(:placeholder-shown) ~ .form-input__label {
+  color: #000;
+}
+
+.form-input__error-message {
+  display: none;
+
+  position: absolute;
+
+  bottom: -50%;
+  left: 5%;
+
+  font-size: smaller;
+
+  color: var(--error-message-color);
+}
+
+.form-input__error-message_active {
+  display: block;
+}
+
+.form__button {
+  inline-size: 100%;
+  block-size: 3rem;
+
+  border: 2px solid var(--accent-color);
+  border-radius: .3rem;
+
+  background-color: transparent;
+
+  font-size: inherit;
+  font-family: inherit;
+
+  color: var(--accent-color);
+
+  cursor: pointer;
+}
+
+.form__button:hover {
+  background-color: var(--hover-accent-color);
+
+  border-color: var(--hover-accent-color);
+
+  color: #fff;
+}
+
+.form-input:focus-visible,
+.form__button:focus-visible {
+  outline: none;
+}

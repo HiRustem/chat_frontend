@@ -1,0 +1,36 @@
+@import url('./vendor/fonts.css');
+@import url('./vendor/variables.css');
+
+@import url('./pages/pages.css');
+
+@import url('./components/components.css');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter';
+  font-size: clamp(1rem, 0.868rem + 0.5634vw, 1.375rem);
+  font-style: normal;
+  font-weight: 400;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

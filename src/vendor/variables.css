@@ -1,0 +1,10 @@
+:root {
+  --navbar-height: 2rem;
+  --list-gap: 1rem;
+  --form-gap: 3rem;
+
+  --accent-color: #892be2;
+  --hover-accent-color: #d4acfa;
+
+  --error-message-color: red;
+}
