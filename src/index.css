@@ -34,3 +34,14 @@ ol {
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+.button {
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  color: var(--accent-color);
+}

@@ -2,10 +2,10 @@ import React from 'react'
 
 import { EmptyElement } from '../components'
 
-const Profile = ({ username, avatar }) => {
+const Profile = ({ username, avatar, openDialog }) => {
   return (
     <div className='profile'>
-      <button className='profile__button'>
+      <button className='profile__button' onClick={openDialog}>
         {
           avatar !== '' ?
 

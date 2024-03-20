@@ -5,7 +5,7 @@ import NavbarLogo from './components/NavbarLogo'
 
 import { Profile } from '../components'
 
-const Navbar = ({ profileInfo }) => {
+const Navbar = ({ profileInfo, openDialog }) => {
   return (
     <nav className='navbar'>
       <NavbarLogo />
@@ -13,7 +13,7 @@ const Navbar = ({ profileInfo }) => {
       {
         profileInfo ?
 
-          <Profile username={profileInfo.username} avatar={profileInfo.avatar} />
+          <Profile username={profileInfo.username} avatar={profileInfo.avatar} openDialog={openDialog} />
 
         :
 

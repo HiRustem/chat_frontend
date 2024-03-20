@@ -1,15 +1,25 @@
-import React, { Suspense, useEffect, useState } from 'react'
-import { Loading, Navbar } from '../components/components'
+import React, { useEffect, useRef, useState } from 'react'
+
+import { Dialog, Loading, Navbar, ProfileSettings } from '../components/components'
+
 import { getUserInfo } from '../api/user'
 
+import { closeDialog, openDialog } from '../components/Dialog/helpers/dialogHelpers'
+
 const ChatsPage = () => {
+  const settingsRef = useRef(null)
   const [user, setUser] = useState(null)
 
   useEffect(() => {
     async function getUserData() {
-      const response = await getUserInfo(localStorage.getItem('chatCloneUsername'), localStorage.getItem('chatCloneKey'))
+      const username = localStorage.getItem('chatCloneUsername')
+      const key = localStorage.getItem('chatCloneKey')
 
-      setUser(response.result)
+      if (username && key) {
+        const response = await getUserInfo(username, key)
+
+        setUser(response.result)
+      }
     }
 
     getUserData()
@@ -21,7 +31,9 @@ const ChatsPage = () => {
         user ?
 
           <>
-            <Navbar profileInfo={{username: user.username, avatar: user.avatar}} />
+            <Navbar profileInfo={{username: user.username, avatar: user.avatar}} openDialog={() => openDialog(settingsRef)} />
+
+            <Dialog ref={settingsRef} children={ <ProfileSettings user={user} setUser={setUser} close={() => closeDialog(settingsRef)} /> } />
           </>
 
         :

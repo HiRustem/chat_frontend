@@ -11,8 +11,6 @@ const StartPage = () => {
     const username = localStorage.getItem('chatCloneUsername')
     const key = localStorage.getItem('chatCloneKey')
 
-    console.log(username, key)
-
     if (username && key) {
       navigate('/chats')
     }

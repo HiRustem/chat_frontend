@@ -8,3 +8,7 @@ export const getUserInfo = async (username, key) => {
     return checkStatus(result)
   })
 }
+
+export const saveUserValue = () => {
+  
+}
