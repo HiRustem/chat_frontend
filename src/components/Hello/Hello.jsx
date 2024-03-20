@@ -3,7 +3,7 @@ import React from 'react'
 const Hello = () => {
   return (
     <p className='hello'>
-      Проект для портфолио, представляющий из себя полноценный мессенджер
+      A portfolio project that is a full-fledged messenger
     </p>
   )
 }

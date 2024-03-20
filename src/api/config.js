@@ -12,3 +12,16 @@ export const checkStatus = (result) => {
 
   return Promise.reject(`Ошибка ${result.status}`)
 }
+
+export const setSessionStore = (result) => {
+  const { username, key } = result.result
+
+  if (username && key) {
+    sessionStorage.setItem('chatCloneUsername', username)
+    sessionStorage.setItem('chatCloneKey', key)
+
+    return true
+  }
+
+  return false
+}

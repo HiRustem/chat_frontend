@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Hello, Navbar } from '../components/components'
+import { Navbar, Hello } from '../components/components'
 
 const StartPage = () => {
   return (
@@ -9,7 +9,7 @@ const StartPage = () => {
 
       <Hello />
     </div>
-  )
-}
+  );
+};
 
-export default StartPage
+export default StartPage;

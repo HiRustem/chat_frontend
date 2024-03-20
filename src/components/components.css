@@ -1,3 +1,6 @@
 @import url('./Navbar/navbar.css');
 @import url('./Hello/hello.css');
-@import url('./Form/form.css')
+@import url('./Form/form.css');
+@import url('./Loading/loading.css');
+@import url('./Profile/profile.css');
+@import url('./EmptyElement/emptyElement.css');

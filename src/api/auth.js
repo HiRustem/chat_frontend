@@ -16,9 +16,6 @@ export const register = async (username, password) => {
     body: JSON.stringify({
       username,
       password,
-      name: username,
-      avatar: '',
-      chats: []
     })
   })
   .then(result => {

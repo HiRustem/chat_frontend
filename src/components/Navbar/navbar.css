@@ -4,6 +4,7 @@
   grid-template-rows: var(--navbar-height);
   grid-template-columns: var(--navbar-height) 1fr;
 
+  margin-block-start: 1rem;
   padding-inline: 1rem;
 }
 

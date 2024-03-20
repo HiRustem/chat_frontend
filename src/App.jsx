@@ -1,6 +1,8 @@
+import React from 'react'
+
 import { Route, Routes } from 'react-router-dom'
 
-import { StartPage, RegisterPage, LoginPage } from './pages/pages'
+import { StartPage, RegisterPage, LoginPage, ChatsPage } from './pages/pages'
 
 const App = () => {
   return (
@@ -9,9 +11,11 @@ const App = () => {
         <Route path='/' element={ <StartPage /> } />
         <Route path='/user/register' element={ <RegisterPage /> } />
         <Route path='/user/login' element={ <LoginPage /> } />
+
+        <Route path='/chats' element={ <ChatsPage /> } />
       </Routes>
     </div>
-  );
-};
+  )
+}
 
 export default App

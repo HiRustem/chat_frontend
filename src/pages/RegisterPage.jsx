@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { Form, Navbar } from '../components/components'
+import { Form, Loading, Navbar } from '../components/components'
 
 const RegisterPage = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <div className='page register-page'>
       <Navbar />
 
-      <Form legend='Sign Up' type='register' />
+      <>
+        {
+          isLoading ?
+
+            <Loading />
+
+          :
+
+            <Form legend='Sign Up' type='register' setIsLoading={setIsLoading} />
+        }
+      </>
     </div>
   )
 }

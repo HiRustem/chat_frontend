@@ -3,12 +3,22 @@ import React from 'react'
 import NavbarLinks from './components/NavbarLinks'
 import NavbarLogo from './components/NavbarLogo'
 
-const Navbar = () => {
+import { Profile } from '../components'
+
+const Navbar = ({ profileInfo }) => {
   return (
     <nav className='navbar'>
       <NavbarLogo />
 
-      <NavbarLinks />
+      {
+        profileInfo ?
+
+          <Profile username={profileInfo.username} avatar={profileInfo.avatar} />
+
+        :
+
+          <NavbarLinks />
+      }
     </nav>
   )
 }

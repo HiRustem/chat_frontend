@@ -1,0 +1,8 @@
+.empty-element {
+  display: inline-block;
+
+  inline-size: 100%;
+  block-size: 100%;
+
+  background-color: rgb(226, 224, 224);
+}

@@ -1,3 +1,6 @@
 export { default as Navbar } from './Navbar/Navbar'
 export { default as Hello } from './Hello/Hello'
 export { default as Form } from './Form/Form'
+export { default as Loading } from './Loading/Loading'
+export { default as Profile } from './Profile/Profile'
+export { default as EmptyElement } from './EmptyElement/EmptyElement'

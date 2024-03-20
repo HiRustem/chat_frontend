@@ -1,0 +1,30 @@
+.loading-container {
+  position: fixed;
+
+  display: flex;
+
+  inline-size: 100%;
+  block-size: 100vh;
+}
+
+.loading {
+  inline-size: 48px;
+  block-size: 48px;
+
+  margin: auto;
+  
+  border-top: 3px solid #000;
+  border-right: 3px solid transparent;
+  border-radius: 50%;
+
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
