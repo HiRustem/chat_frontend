@@ -15,6 +15,7 @@ export const typeFunction = async (type, current) => {
   if (type === 'register') {
     return await register(username.value, password.value)
       .then(result => {
+        console.log(result)
         return setSessionStore(result)
       })
       .catch(() => { return false })

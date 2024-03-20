@@ -7,7 +7,7 @@ const ChatsPage = () => {
 
   useEffect(() => {
     async function getUserData() {
-      const response = await getUserInfo(sessionStorage.getItem('chatCloneUsername'), sessionStorage.getItem('chatCloneKey'))
+      const response = await getUserInfo(localStorage.getItem('chatCloneUsername'), localStorage.getItem('chatCloneKey'))
 
       setUser(response.result)
     }

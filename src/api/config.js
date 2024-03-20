@@ -17,8 +17,8 @@ export const setSessionStore = (result) => {
   const { username, key } = result.result
 
   if (username && key) {
-    sessionStorage.setItem('chatCloneUsername', username)
-    sessionStorage.setItem('chatCloneKey', key)
+    localStorage.setItem('chatCloneUsername', username)
+    localStorage.setItem('chatCloneKey', key)
 
     return true
   }
