@@ -2,6 +2,8 @@
   inline-size: clamp(18.75rem, 16.5493rem + 9.3897vw, 25rem);
 
   padding: 1rem;
+
+  background-color: #fff;
 }
 
 .profile-settings__user-bar {
@@ -41,6 +43,8 @@
   gap: 2rem;
 
   padding: 2rem;
+
+  background-color: #fff;
 }
 
 .profile-settings-dialog__button {

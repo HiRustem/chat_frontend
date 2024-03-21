@@ -1,0 +1,92 @@
+.user-interface {
+  block-size: 100%;
+  inline-size: 100%;
+
+  padding: 1rem;
+}
+
+.user-interface__chat {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+
+  border: 1px solid var(--accent-color);
+  border-radius: 1rem;
+
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.user-interface__chats-bar {
+  padding: 1rem;
+
+  border-right: 1px solid var(--accent-color);
+}
+
+.user-interface__users-list {
+  inline-size: 100%;
+  
+  margin-block: 2rem;
+}
+
+.user-interface__users-item {
+  inline-size: 100%;
+}
+
+.user-interface__users-button {
+  inline-size: 100%;
+
+  border: none;
+  border-radius: 1rem;
+
+  background-color: transparent;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  cursor: pointer;
+}
+
+.user-interface__users-button:hover,
+.user-interface__users-button:active {
+  background-color: var(--hover-accent-color);
+}
+
+.user-interface__user-card {
+  display: grid;
+  grid-template-columns: var(--navbar-height) 1fr;
+  grid-template-rows: auto;
+
+  gap: 1rem;
+
+  inline-size: 100%;
+}
+
+.user-interface__user-card__image-container {
+  inline-size: var(--navbar-height);
+  block-size: var(--navbar-height);
+
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+
+.user-interface__user-card__names {
+  display: flex;
+  flex-direction: column;
+
+  align-items: start;
+  justify-content: space-evenly;
+}
+
+.user-interface__user-card__name {
+  font-size: smaller;
+}
+
+.user-interface__user-card__username {
+  font-size: small;
+}
+
+.user-interface-chat {
+  display: grid;
+  grid-template-rows: var(--navbar-height) 1fr var(--navbar-height);
+}

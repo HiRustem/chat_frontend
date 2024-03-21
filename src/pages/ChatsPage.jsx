@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { Dialog, Loading, Navbar, ProfileSettings } from '../components/components'
+import { Dialog, Loading, Navbar, ProfileSettings, UserInterface } from '../components/components'
 
 import { getUserInfo } from '../api/user'
 
@@ -36,6 +36,8 @@ const ChatsPage = () => {
 
           <>
             <Navbar profileInfo={{name: user.name, avatar: user.avatar}} openDialog={() => openDialog(settingsRef)} />
+
+            <UserInterface user={user} />
 
             <Dialog ref={settingsRef} children={ <ProfileSettings user={user} setUser={setUser} close={() => closeDialog(settingsRef)} /> } />
           </>

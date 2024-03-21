@@ -23,3 +23,12 @@ export const saveUserValue = async (username, valueName, value) => {
     return checkStatus(result)
   })
 }
+
+export const findUserByUsername = async (username) => {
+  return await fetch(`${config.baseUrl}/user/find/${username}`, {
+    headers: config.headers,
+  })
+  .then(result => {
+    return checkStatus(result)
+  })
+}

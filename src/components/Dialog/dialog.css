@@ -1,6 +1,9 @@
 .dialog {
-  border: none;
-
   align-self: center;
   justify-self: center;
+
+  background-color: transparent;
+
+  border: none;
+  border-radius: 1rem;
 }

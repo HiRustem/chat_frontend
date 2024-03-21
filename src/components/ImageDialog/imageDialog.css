@@ -1,0 +1,13 @@
+.image-dialog-container {
+  display: grid;
+  grid-template-columns: 2rem clamp(15.625rem, 7.9225rem + 32.8638vw, 37.5rem) 2rem;
+}
+
+.image-dialog__image {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.image-dialog__button {
+  align-self: flex-start;
+}

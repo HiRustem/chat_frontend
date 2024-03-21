@@ -1,0 +1,21 @@
+.search-bar-container {
+  inline-size: 100%;
+}
+
+.search-bar__input {
+  inline-size: 100%;
+
+  padding: .5rem;
+
+  border: 2px solid #000;
+  border-radius: 1rem;
+
+  font-size: small;
+  font-weight: 400;
+  font-family: inherit;
+}
+
+.search-bar__input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}

@@ -20,7 +20,7 @@ const ProfileSettings = ({ user, setUser, close }) => {
 
   return (
     <div className='profile-settings'>
-      <ProfileSettingsBar name={name} avatar={avatar} closeDialog={close} />
+      <ProfileSettingsBar name={name} avatar={avatar} close={close} />
 
       <ProfileSettingsButtons openNameDialog={() => openDialog(nameRef)} openAvatarDialog={() => openDialog(avatarRef)} signOut={() => signOut(navigate)} />
 

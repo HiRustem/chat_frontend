@@ -9,8 +9,6 @@
 .profile__avatar {
   block-size: 100%;
   inline-size: 100%;
-
-  
 }
 
 .profile__button {
@@ -20,7 +18,7 @@
   background-color: transparent;
 
   border: 1px solid var(--accent-color);
-  border-radius: 1rem;
+  border-radius: 50%;
 
   overflow: hidden;
   cursor: pointer;
