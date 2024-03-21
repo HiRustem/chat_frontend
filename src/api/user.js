@@ -9,6 +9,17 @@ export const getUserInfo = async (username, key) => {
   })
 }
 
-export const saveUserValue = () => {
-  
+export const saveUserValue = async (username, valueName, value) => {
+  return await fetch(`${config.baseUrl}/user/chats`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      username,
+      valueName,
+      value,
+    })
+  })
+  .then(result => {
+    return checkStatus(result)
+  })
 }

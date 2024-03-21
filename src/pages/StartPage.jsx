@@ -12,7 +12,7 @@ const StartPage = () => {
     const key = localStorage.getItem('chatCloneKey')
 
     if (username && key) {
-      navigate('/chats')
+      navigate('/user/chats')
     }
   }, [])
 

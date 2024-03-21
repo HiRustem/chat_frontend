@@ -13,7 +13,7 @@ const Navbar = ({ profileInfo, openDialog }) => {
       {
         profileInfo ?
 
-          <Profile username={profileInfo.username} avatar={profileInfo.avatar} openDialog={openDialog} />
+          <Profile name={profileInfo.name} avatar={profileInfo.avatar} openDialog={openDialog} />
 
         :
 

@@ -3,12 +3,12 @@ const showInputError = (errorElement, message) => {
   errorElement.classList.add('form-input__error-message_active')
 }
 
-const hideInputError = (errorElement) => {
+export const hideInputError = (errorElement) => {
   errorElement.textContent = ''
   errorElement.classList.remove('form-input__error-message_active')
 }
 
-const checkValidity = (input) => {
+export const checkInputValidity = (input) => {
   const inputElement = input.querySelector('.form-input')
   const errorElement = input.querySelector('.form-input__error-message')
 
@@ -29,7 +29,7 @@ export const formValidation = (target) => {
   const inputs = target.querySelectorAll('.form-input-container')
   
   for(let input of inputs) {
-    checkValidity(input)
+    checkInputValidity(input)
   }
 }
 

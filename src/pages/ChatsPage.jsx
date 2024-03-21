@@ -5,9 +5,11 @@ import { Dialog, Loading, Navbar, ProfileSettings } from '../components/componen
 import { getUserInfo } from '../api/user'
 
 import { closeDialog, openDialog } from '../components/Dialog/helpers/dialogHelpers'
+import { useNavigate } from 'react-router-dom'
 
 const ChatsPage = () => {
   const settingsRef = useRef(null)
+  const navigate = useNavigate()
   const [user, setUser] = useState(null)
 
   useEffect(() => {
@@ -19,6 +21,8 @@ const ChatsPage = () => {
         const response = await getUserInfo(username, key)
 
         setUser(response.result)
+      } else {
+        navigate('/user/login')
       }
     }
 
@@ -31,7 +35,7 @@ const ChatsPage = () => {
         user ?
 
           <>
-            <Navbar profileInfo={{username: user.username, avatar: user.avatar}} openDialog={() => openDialog(settingsRef)} />
+            <Navbar profileInfo={{name: user.name, avatar: user.avatar}} openDialog={() => openDialog(settingsRef)} />
 
             <Dialog ref={settingsRef} children={ <ProfileSettings user={user} setUser={setUser} close={() => closeDialog(settingsRef)} /> } />
           </>

@@ -7,7 +7,7 @@ export const typeFunction = async (type, current) => {
   if (type === 'login') {
     return await login(username.value, password.value)
       .then(result => {
-        return setSessionStore(result)
+        return setSessionStore(result.result.username, result.result.key)
       })
       .catch(() => { return false })
   }
@@ -16,7 +16,7 @@ export const typeFunction = async (type, current) => {
     return await register(username.value, password.value)
       .then(result => {
         console.log(result)
-        return setSessionStore(result)
+        return setSessionStore(result.username, result.key)
       })
       .catch(() => { return false })
   }

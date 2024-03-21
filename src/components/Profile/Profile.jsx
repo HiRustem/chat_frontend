@@ -2,7 +2,7 @@ import React from 'react'
 
 import { EmptyElement } from '../components'
 
-const Profile = ({ username, avatar, openDialog }) => {
+const Profile = ({ name, avatar, openDialog }) => {
   return (
     <div className='profile'>
       <button className='profile__button' onClick={openDialog}>
@@ -17,7 +17,7 @@ const Profile = ({ username, avatar, openDialog }) => {
         }
       </button>
 
-      <span className='profile__username'>{username}</span>
+      <span className='profile__username'>{name}</span>
     </div>
   )
 }

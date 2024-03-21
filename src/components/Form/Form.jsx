@@ -24,7 +24,7 @@ const Form = ({ legend, type, setIsLoading }) => {
     }
 
     if (status) {
-      navigate('/chats')
+      navigate('/user/chats')
     } else {
       console.log('Ошибка')
     }
@@ -39,7 +39,7 @@ const Form = ({ legend, type, setIsLoading }) => {
 
         <FormInput name='password' type='password' text='Password' minlength='6' maxlength='20' pattern='^[a-zA-Z0-9]*$' missError='you missed this field' lengthError='minimum number of characters: 6' patternError='only Latin letters and numbers are allowed' />
 
-        <button className='form__button' type='submit'>{type === 'login' ? 'Sign In' : 'Sign Up'}</button>
+        <button className='form__button' type='submit'>{type === 'login' ? 'Sign in' : 'Sign up'}</button>
       </fieldset>
     </form>
   )

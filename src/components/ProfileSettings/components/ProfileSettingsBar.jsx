@@ -4,7 +4,7 @@ import { IoClose } from 'react-icons/io5'
 
 import { EmptyElement } from '../../components'
 
-const ProfileSettingsBar = ({ username, avatar, closeDialog }) => {
+const ProfileSettingsBar = ({ name, avatar, closeDialog }) => {
   return (
     <div className="profile-settings__user-bar">
       <div className="profile-settings__avatar-container">
@@ -16,7 +16,7 @@ const ProfileSettingsBar = ({ username, avatar, closeDialog }) => {
           )}
       </div>
 
-      <span className="profile-settings__username">{username}</span>
+      <span className="profile-settings__username">{name}</span>
 
       <button
         className="button"

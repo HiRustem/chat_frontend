@@ -13,9 +13,7 @@ export const checkStatus = (result) => {
   return Promise.reject(`Ошибка ${result.status}`)
 }
 
-export const setSessionStore = (result) => {
-  const { username, key } = result.result
-
+export const setSessionStore = (username, key) => {
   if (username && key) {
     localStorage.setItem('chatCloneUsername', username)
     localStorage.setItem('chatCloneKey', key)
