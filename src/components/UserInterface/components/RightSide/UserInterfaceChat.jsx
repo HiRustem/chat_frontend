@@ -3,14 +3,24 @@ import UserInterfaceChatMessages from './UserInterfaceChatMessages'
 import UserInterfaceChatBar from './UserInterfaceChatBar'
 import UserInterfaceChatInput from './UserInterfaceChatInput'
 
-const UserInterfaceChat = ({ currentChat }) => {
+const UserInterfaceChat = ({ currentChat, clearChat, sendMessage }) => {
   return (
-    <div className='user-interface-chat'>
-      <UserInterfaceChatBar />
+    <div className={`${currentChat ? '' : 'user-interface-chat_inactive'} user-interface-chat_empty`}>
+      {
+        currentChat ?
 
-      <UserInterfaceChatMessages />
+          <div className='user-interface-chat'>
+            <UserInterfaceChatBar currentChat={currentChat} clearChat={clearChat} />
 
-      <UserInterfaceChatInput />
+            <UserInterfaceChatMessages currentChat={currentChat} />
+
+            <UserInterfaceChatInput sendMessage={sendMessage} />
+          </div>
+
+        :
+
+          <p className='user-interface-chat_empty-text'>Choose who you would like to write to</p>
+    }
     </div>
   )
 }

@@ -5,7 +5,7 @@ import { findUserByUsername } from '../../../../api/user'
 import UserInterfaceChatsList from './UserInterfaceChatsList'
 import { getChat } from '../../../../api/chat'
 
-const UserInterfaceChatsBar = ({ user, createChat }) => {
+const UserInterfaceChatsBar = ({ user, currentChat, createChat, setChat }) => {
   const { chats } = user
 
   const [isLoading, setIsLoading] = useState(false)
@@ -37,13 +37,13 @@ const UserInterfaceChatsBar = ({ user, createChat }) => {
   }, [])
 
   return (
-    <div className='user-interface__chats-bar'>
+    <div className={`${currentChat ? 'user-interface__chats-bar_inactive' : ''} user-interface__chats-bar`}>
       <SearchBar searchFunction={findUserByUsername} setResultArray={setResultArray} setIsLoading={setIsLoading} />
 
       {
         resultArray.length === 0 ?
 
-          <UserInterfaceChatsList isLoading={isLoading} chatsArray={chatsArray}  />
+          <UserInterfaceChatsList isLoading={isLoading} chatsArray={chatsArray} setChat={setChat} />
 
         :
           <UserInterfaceUsersList isLoading={isLoading} usersArray={resultArray} createChat={createChat} />

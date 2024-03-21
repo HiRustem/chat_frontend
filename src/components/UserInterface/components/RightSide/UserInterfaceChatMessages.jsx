@@ -1,8 +1,22 @@
 import React from 'react'
 
-const UserInterfaceChatMessages = () => {
+const UserInterfaceChatMessages = ({ currentChat }) => {
+  const { messages } = currentChat
+
   return (
-    <div>UserInterfaceChatMessages</div>
+    <>
+      {
+        messages.length > 0 ?
+
+          <div className='user-interface-chat__messages'>
+        
+          </div>
+
+        :
+
+          <p className='user-interface-chat_empty-text'>There are no messages in the chat yet</p>
+      }
+    </>
   )
 }
 

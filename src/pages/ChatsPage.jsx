@@ -37,7 +37,7 @@ const ChatsPage = () => {
           <>
             <Navbar profileInfo={{name: user.name, avatar: user.avatar}} openDialog={() => openDialog(settingsRef)} />
 
-            <UserInterface user={user} />
+            <UserInterface user={user} setUser={setUser} />
 
             <Dialog ref={settingsRef} children={ <ProfileSettings user={user} setUser={setUser} close={() => closeDialog(settingsRef)} /> } />
           </>

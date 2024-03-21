@@ -7,13 +7,100 @@
 
 .user-interface__chat {
   display: grid;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 30% 1fr;
 
   border: 1px solid var(--accent-color);
   border-radius: 1rem;
 
   block-size: 100%;
   inline-size: 100%;
+}
+
+.user-interface-chat {
+  display: grid;
+
+  inline-size: 100%;
+  block-size: 100%;
+
+  grid-template-rows: var(--navbar-height) 1fr var(--navbar-height);
+
+  align-content: space-between;
+}
+
+.user-interface-chat_empty {
+  display: grid;
+  grid-template-rows: 1fr;
+
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.user-interface-chat_empty-text {
+  align-self: center;
+  justify-self: center;
+}
+
+.user-interface-chat__bar {
+  display: grid;
+
+  grid-template-columns: var(--navbar-height) 1fr var(--navbar-height);
+
+  align-items: center;
+  justify-content: space-evenly;
+
+  padding: .5rem;
+}
+
+.user-interface-chat__bar-button {
+  font-size: smaller;
+}
+
+.user-interface-chat__bar-name {
+  text-align: center;
+}
+
+.user-interface__chat__bar__image-container {
+  inline-size: calc(var(--navbar-height) - 1rem);
+  block-size: calc(var(--navbar-height) - 1rem);
+
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+
+.user-interface-chat__messages {
+  margin-block: 1rem;
+}
+
+.user-interface-chat__input-container {
+  padding-inline: 1rem;
+}
+
+.user-interface-chat__input {
+  inline-size: 90%;
+  block-size: 70%;
+
+  padding: .5rem;
+
+  border: 1px solid var(--accent-color);
+  border-radius: 1rem;
+
+  font-size: smaller;
+  font-family: inherit;
+}
+
+.user-interface-chat__input:focus {
+  outline: none;
+}
+
+.user-interface-chat__input-button {
+  inline-size: 10%;
+  block-size: 50%;
+
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
 }
 
 .user-interface__chats-bar {
@@ -86,7 +173,20 @@
   font-size: small;
 }
 
-.user-interface-chat {
-  display: grid;
-  grid-template-rows: var(--navbar-height) 1fr var(--navbar-height);
+@media (width < 768px) {
+  .user-interface__chats-bar_inactive {
+    display: none;
+  }
+
+  .user-interface-chat_inactive {
+    display: none;
+  }
+
+  .user-interface__chat {
+    grid-template-columns: 1fr;
+  }
+
+  .user-interface__chats-bar {
+    border-right: none;
+  }
 }

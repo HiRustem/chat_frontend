@@ -13,16 +13,17 @@ export const getChat = async (chatId) => {
   })
 }
 
-export const createChat = async (firstUsername, secondUsername) => {
+export const createNewChat = async (firstUsername, secondUsername) => {
   return await fetch(`${config.baseUrl}/user/chats`, {
     method: 'POST',
     headers: config.headers,
     body: JSON.stringify({
       firstUsername,
-      secondUsername
-    })
-    .then(result => {
-      return checkStatus(result)
+      secondUsername,
     })
   })
+  .then(result => {
+    return checkStatus(result)
+  })
+  
 }
