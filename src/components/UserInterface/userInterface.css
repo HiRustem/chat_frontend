@@ -43,15 +43,18 @@
 .user-interface-chat__bar {
   display: grid;
 
-  grid-template-columns: var(--navbar-height) 1fr var(--navbar-height);
+  grid-template-columns: 4rem 1fr 4rem;
 
   align-items: center;
   justify-content: space-evenly;
 
-  padding: .5rem;
+  padding: .5rem .5rem 0 .5rem;
 }
 
 .user-interface-chat__bar-button {
+  display: flex;
+  align-items: center;
+
   font-size: smaller;
 }
 
@@ -59,9 +62,9 @@
   text-align: center;
 }
 
-.user-interface__chat__bar__image-container {
-  inline-size: calc(var(--navbar-height) - 1rem);
-  block-size: calc(var(--navbar-height) - 1rem);
+.user-interface__chat__bar__image-button {
+  inline-size: 2rem;
+  block-size: 2rem;
 
   border-radius: 50%;
 
