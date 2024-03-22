@@ -1,9 +1,7 @@
 .dialog {
-  align-self: center;
-  justify-self: center;
-
-  -webkit-align-self: center;
-  -webkit-justify-self: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   background-color: transparent;
 
