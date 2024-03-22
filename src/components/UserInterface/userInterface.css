@@ -225,7 +225,7 @@
   .user-interface__chat {
     grid-template-columns: 1fr;
 
-    block-size: calc(100svh - var(--navbar-height) - 3rem);
+    block-size: calc(100svb - var(--navbar-height) - 3rem);
   }
 
   .user-interface__chats-bar {
