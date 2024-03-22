@@ -58,6 +58,7 @@ const UserInterface = ({ user, setUser }) => {
 
   const clearChat = () => {
     setCurrentChat(null)
+    setCurrentCompanion(null)
   }
 
   const sendMessage = async (messageType, messageInputRef) => {

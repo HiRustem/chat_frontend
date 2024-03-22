@@ -17,7 +17,7 @@ const UserInterfaceChat = ({ user, companion, currentChat, setCurrentChat, clear
         })
     }
 
-    if (currentChat) {
+    if (currentChat && companion) {
       const newTimerId = setInterval(getMessages, 5000)
       setTimerId(newTimerId)
     } else {

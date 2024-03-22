@@ -47,3 +47,7 @@ ol {
 .button:hover {
   color: var(--accent-color);
 }
+
+.button:focus {
+  outline: none;
+}
