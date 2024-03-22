@@ -11,6 +11,7 @@ import { findUserById, getUserInfo } from '../../api/user'
 const UserInterface = ({ user, setUser }) => {
   const [currentChat, setCurrentChat] = useState(null)
   const [currentCompanion, setCurrentCompanion] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
   const chatSettingsRef = useRef(null)
   
   const createChat = async (id, username) => {
@@ -34,6 +35,7 @@ const UserInterface = ({ user, setUser }) => {
 
   const setChat = async (chatId) => {
     if (!currentChat) {
+      setIsLoading(true)
       const companionId = await getChat(chatId)
         .then(result => {
           if (Object.keys(result).length > 0) {
@@ -53,6 +55,8 @@ const UserInterface = ({ user, setUser }) => {
         .catch(error => {
           console.log(error)
         })
+
+      setIsLoading(false)
     }
   }
 
@@ -73,7 +77,10 @@ const UserInterface = ({ user, setUser }) => {
 
           messageInputRef.current.value = ''
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+          console.log(messageObject)
+          console.log(error)
+        })
       }
   }
 
@@ -82,7 +89,7 @@ const UserInterface = ({ user, setUser }) => {
       <div className='user-interface__chat'>
         <UserInterfaceChatsBar user={user} currentChat={currentChat} createChat={createChat} setChat={setChat} />
 
-        <UserInterfaceChat user={user} companion={currentCompanion} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
+        <UserInterfaceChat isLoading={isLoading} user={user} companion={currentCompanion} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
       </div>
     </div>
   )

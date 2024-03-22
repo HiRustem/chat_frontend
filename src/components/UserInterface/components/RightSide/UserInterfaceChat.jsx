@@ -4,7 +4,7 @@ import UserInterfaceChatBar from './UserInterfaceChatBar'
 import UserInterfaceChatInput from './UserInterfaceChatInput'
 import { getNewMessages } from '../../../../api/chat'
 
-const UserInterfaceChat = ({ user, companion, currentChat, setCurrentChat, clearChat, sendMessage }) => {
+const UserInterfaceChat = ({ isLoading, user, companion, currentChat, setCurrentChat, clearChat, sendMessage }) => {
   const [timerId, setTimerId] = useState(null)
 
   useEffect(() => {
@@ -40,7 +40,18 @@ const UserInterfaceChat = ({ user, companion, currentChat, setCurrentChat, clear
 
         :
 
-          <p className='user-interface-chat_empty-text'>Choose who you would like to write to</p>
+          <div className='user-interface-chat_empty-text'>
+            {
+              isLoading ?
+
+                'Loading...'
+
+              :
+
+                <p className='user-interface-chat_empty-text'>Choose who you would like to write to</p>
+            }
+          </div>
+
     }
     </div>
   )

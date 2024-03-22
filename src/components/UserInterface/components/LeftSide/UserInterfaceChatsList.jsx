@@ -8,7 +8,7 @@ const UserInterfaceChatsList = ({ isLoading, chatsArray, setChat }) => {
       {
         isLoading ?
 
-          'Loading...'
+          <p className='user-interface__users-list_loading'>Loading...</p>
 
         :
             <ul>

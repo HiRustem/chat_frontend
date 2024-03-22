@@ -118,6 +118,8 @@
 
   font-size: smaller;
   font-family: inherit;
+
+  overflow: hidden;
 }
 
 .user-interface-chat__input:focus {
@@ -150,6 +152,10 @@
   inline-size: 100%;
   
   margin-block: 2rem;
+}
+
+.user-interface__users-list_loading {
+  text-align: center;
 }
 
 .user-interface__users-item {
