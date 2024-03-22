@@ -2,7 +2,7 @@ import React from 'react'
 import TextMessageCard from '../../../MessageCard/TextMessageCard'
 import ImageMessageCard from '../../../MessageCard/ImageMessageCard'
 
-const UserInterfaceChatMessagesCard = ({ user, message }) => {
+const UserInterfaceChatMessagesCard = ({ user, companion, message }) => {
   const { type } = message
 
   return (
@@ -10,7 +10,7 @@ const UserInterfaceChatMessagesCard = ({ user, message }) => {
       {
         type === 'text' ?
 
-          <TextMessageCard user={user} message={message} />
+          <TextMessageCard user={user} companion={companion} message={message} />
 
         :
 

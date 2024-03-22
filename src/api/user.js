@@ -32,3 +32,12 @@ export const findUserByUsername = async (username) => {
     return checkStatus(result)
   })
 }
+
+export const findUserById = async (id) => {
+  return await fetch(`${config.baseUrl}/user/get/${id}`, {
+    headers: config.headers,
+  })
+  .then(result => {
+    return checkStatus(result)
+  })
+}

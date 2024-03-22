@@ -13,3 +13,11 @@ export const createMessageObject = (messageType, messageValue, userId) => {
     viewd: [userId],
   }
 }
+
+export const getCompanion = (userId, members) => {
+  return members.find(memberId => parseInt(memberId) !== userId)
+}
+
+export const scrollToBottom = (ref) => {
+  ref.current.scrollTop = ref.current.scrollHeight
+}

@@ -5,8 +5,8 @@ import UserInterfaceChatsBar from './components/LeftSide/UserInterfaceChatsBar'
 import { checkUserChats } from './helpers/checkChatMembers'
 
 import { createNewChat, getChat, sendNewMessage } from '../../api/chat'
-import { createMessageObject } from './helpers/userInterfaceHelpers'
-import { getUserInfo } from '../../api/user'
+import { createMessageObject, getCompanion } from './helpers/userInterfaceHelpers'
+import { findUserById, getUserInfo } from '../../api/user'
 
 const UserInterface = ({ user, setUser }) => {
   const [currentChat, setCurrentChat] = useState(null)
@@ -19,10 +19,11 @@ const UserInterface = ({ user, setUser }) => {
       await createNewChat(user.username, username)
         .then(result => {
           const newChats = [...user.chats]
-          newChats.push(result)
+          newChats.push(result.chat)
     
           setUser(prevData => ({...prevData, chats: newChats}))
-          setCurrentChat(result)
+          setCurrentChat(result.chat)
+          setCurrentCompanion(result.companion)
         })
         .catch(error => console.log(error))
       console.log(status)
@@ -32,15 +33,27 @@ const UserInterface = ({ user, setUser }) => {
   }
 
   const setChat = async (chatId) => {
-    await getChat(chatId)
-      .then(result => {
-        if (Object.keys(result).length > 0) {
-          setCurrentChat(result)
-        }
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    if (!currentChat) {
+      const companionId = await getChat(chatId)
+        .then(result => {
+          if (Object.keys(result).length > 0) {
+            setCurrentChat(result)
+
+            return getCompanion(user.id, result.members)
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+
+      await findUserById(companionId)
+        .then(result => {
+          setCurrentCompanion(result)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
   }
 
   const clearChat = () => {
@@ -59,6 +72,7 @@ const UserInterface = ({ user, setUser }) => {
 
           messageInputRef.current.value = ''
         })
+        .catch(error => console.log(error))
       }
   }
 
@@ -67,7 +81,7 @@ const UserInterface = ({ user, setUser }) => {
       <div className='user-interface__chat'>
         <UserInterfaceChatsBar user={user} currentChat={currentChat} createChat={createChat} setChat={setChat} />
 
-        <UserInterfaceChat user={user} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
+        <UserInterfaceChat user={user} companion={currentCompanion} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
       </div>
     </div>
   )

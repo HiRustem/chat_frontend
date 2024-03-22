@@ -4,7 +4,7 @@ import UserInterfaceChatBar from './UserInterfaceChatBar'
 import UserInterfaceChatInput from './UserInterfaceChatInput'
 import { getNewMessages } from '../../../../api/chat'
 
-const UserInterfaceChat = ({ user, currentChat, setCurrentChat, clearChat, sendMessage }) => {
+const UserInterfaceChat = ({ user, companion, currentChat, setCurrentChat, clearChat, sendMessage }) => {
   const [timerId, setTimerId] = useState(null)
 
   useEffect(() => {
@@ -13,7 +13,6 @@ const UserInterfaceChat = ({ user, currentChat, setCurrentChat, clearChat, sendM
         .then(result => {
           if (currentChat.messages.length !== result.length) {
             setCurrentChat(prevValue => ({ ...prevValue, messages: result }))
-            console.log(result)
           }
         })
     }
@@ -29,12 +28,12 @@ const UserInterfaceChat = ({ user, currentChat, setCurrentChat, clearChat, sendM
   return (
     <div className={`${currentChat ? '' : 'user-interface-chat_inactive'} user-interface-chat_empty`}>
       {
-        currentChat ?
+        currentChat && companion ?
 
           <div className='user-interface-chat'>
             <UserInterfaceChatBar currentChat={currentChat} clearChat={clearChat} />
 
-            <UserInterfaceChatMessages user={user} currentChat={currentChat} />
+            <UserInterfaceChatMessages user={user} companion={companion} currentChat={currentChat} />
 
             <UserInterfaceChatInput sendMessage={sendMessage} />
           </div>
