@@ -17,11 +17,11 @@
 }
 
 .user-interface-chat {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
 
   inline-size: 100%;
-  block-size: calc(100vh - var(--navbar-height) - 3.5rem);
+  block-size: calc(100svb - var(--navbar-height) - 3.5rem);
 
   justify-content: space-between;
 }
@@ -79,7 +79,6 @@
   align-items: flex-end;
   justify-content: end;
 
-  block-size: 100%;
   inline-size: 100%;
 
   margin-block: 1rem;
@@ -224,8 +223,6 @@
 
   .user-interface__chat {
     grid-template-columns: 1fr;
-
-    block-size: calc(100svb - var(--navbar-height) - 3rem);
   }
 
   .user-interface__chats-bar {
