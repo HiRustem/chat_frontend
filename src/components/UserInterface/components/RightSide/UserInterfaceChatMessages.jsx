@@ -1,8 +1,9 @@
 import React from 'react'
+import UserInterfaceChatMessagesCard from './UserInterfaceChatMessagesCard'
 
-const UserInterfaceChatMessages = ({ currentChat }) => {
+const UserInterfaceChatMessages = ({ user, currentChat }) => {
   const { messages } = currentChat
-
+  
   return (
     <>
       {
@@ -11,8 +12,8 @@ const UserInterfaceChatMessages = ({ currentChat }) => {
           <ul className='user-interface-chat__messages'>
             {
               messages.map(message => (
-                <li key={message.id}>
-                  <p>{message.content}</p>
+                <li key={message.id} className='user-interface-chat__messages-item'>
+                  <UserInterfaceChatMessagesCard user={user} message={message} />
                 </li>
               ))
             }

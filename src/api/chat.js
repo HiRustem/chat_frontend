@@ -40,3 +40,12 @@ export const sendNewMessage = async (chatId, message) => {
     return checkStatus(result)
   })
 }
+
+export const getNewMessages = async (chatId) => {
+  return await fetch(`${config.baseUrl}/message/${chatId}`, {
+    headers: config.headers,
+  })
+  .then(result => {
+    return checkStatus(result)
+  })
+}

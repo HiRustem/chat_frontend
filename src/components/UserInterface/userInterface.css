@@ -88,6 +88,18 @@
   padding: 1rem;
 }
 
+.user-interface-chat__messages-item {
+  display: flex;
+
+  inline-size: 100%;
+
+  justify-content: end;
+}
+
+.user-interface-chat__messages-card {
+  max-width: 70%;
+}
+
 .user-interface-chat__input-container {
   display: grid;
   grid-template-columns: min-content 1fr min-content;
@@ -119,6 +131,8 @@
   background-color: transparent;
 
   align-items: center;
+
+  color: inherit;
 
   cursor: pointer;
 }
@@ -153,6 +167,8 @@
 
   font-family: inherit;
   font-size: inherit;
+
+  color: inherit;
 
   cursor: pointer;
 }
@@ -212,5 +228,9 @@
 
   .user-interface__chats-bar {
     border-right: none;
+  }
+
+  .user-interface-chat__messages-card {
+    max-width: 100%;
   }
 }

@@ -1,0 +1,52 @@
+.text-message-card {
+  display: grid;
+  grid-template-columns: 1fr clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
+
+  gap: 1rem;
+
+  justify-content: end;
+
+  inline-size: 100%;
+
+  align-items: end;
+}
+
+.text-message-card__avatar-container {
+  inline-size: 100%;
+  block-size: clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
+
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+
+.text-message-card__avatar {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.text-message-card__text {
+  position: relative;
+
+  min-block-size: 20%;
+  max-block-size: 100%;
+
+  background-color: var(--hover-accent-color);
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+
+  font-size: smaller;
+}
+
+.text-message-card__text::after {
+  content: '';
+
+  position: absolute;
+  bottom: .2rem;
+  right: -.5rem;
+
+  border: 10px solid transparent;
+  border-bottom: 10px solid var(--hover-accent-color);
+}

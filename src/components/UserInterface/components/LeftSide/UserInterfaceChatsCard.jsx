@@ -5,7 +5,7 @@ const UserInterfaceChatsCard = ({ cardObject }) => {
   const { username, name, avatar } = cardObject
 
   return (
-    <div className='user-interface__user-card'>
+    <article className='user-interface__user-card'>
       <div className='user-interface__user-card__image-container'>
         <Avatar imageClassName='user-interface__user-card__image' url={avatar} />
       </div>
@@ -15,7 +15,7 @@ const UserInterfaceChatsCard = ({ cardObject }) => {
 
         <p className='user-interface__user-card__username'>{username ? username : ''}</p>
       </div>
-    </div>
+    </article>
   )
 }
 

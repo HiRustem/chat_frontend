@@ -6,10 +6,11 @@ import { checkUserChats } from './helpers/checkChatMembers'
 
 import { createNewChat, getChat, sendNewMessage } from '../../api/chat'
 import { createMessageObject } from './helpers/userInterfaceHelpers'
+import { getUserInfo } from '../../api/user'
 
 const UserInterface = ({ user, setUser }) => {
-
   const [currentChat, setCurrentChat] = useState(null)
+  const [currentCompanion, setCurrentCompanion] = useState(null)
   const chatSettingsRef = useRef(null)
   
   const createChat = async (id, username) => {
@@ -47,16 +48,18 @@ const UserInterface = ({ user, setUser }) => {
   }
 
   const sendMessage = async (messageType, messageInputRef) => {
-    const { id } = currentChat
+    if (messageInputRef.current.value.length > 0) {
+      const { id } = currentChat
 
-    const messageObject = createMessageObject(messageType, messageInputRef.current.value, user.id)
+      const messageObject = createMessageObject(messageType, messageInputRef.current.value, user.id)
 
-    await sendNewMessage(id, messageObject)
-      .then(result => {
-        setCurrentChat(prevValue => ({ ...prevValue, messages: result.messages }))
+      await sendNewMessage(id, messageObject)
+        .then(result => {
+          setCurrentChat(prevValue => ({ ...prevValue, messages: result.messages }))
 
-        messageInputRef.current.value = ''
-      })
+          messageInputRef.current.value = ''
+        })
+      }
   }
 
   return (
@@ -64,7 +67,7 @@ const UserInterface = ({ user, setUser }) => {
       <div className='user-interface__chat'>
         <UserInterfaceChatsBar user={user} currentChat={currentChat} createChat={createChat} setChat={setChat} />
 
-        <UserInterfaceChat currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
+        <UserInterfaceChat user={user} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
       </div>
     </div>
   )

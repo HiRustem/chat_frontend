@@ -4,7 +4,6 @@ import { IoChevronBack } from 'react-icons/io5'
 
 import { Avatar } from '../../../components'
 
-
 const UserInterfaceChatBar = ({ currentChat, clearChat }) => {
   const { name, avatar } = currentChat
   
