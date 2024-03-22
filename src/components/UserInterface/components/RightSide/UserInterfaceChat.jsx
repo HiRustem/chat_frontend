@@ -3,7 +3,7 @@ import UserInterfaceChatMessages from './UserInterfaceChatMessages'
 import UserInterfaceChatBar from './UserInterfaceChatBar'
 import UserInterfaceChatInput from './UserInterfaceChatInput'
 
-const UserInterfaceChat = ({ currentChat, clearChat, sendMessage }) => {
+const UserInterfaceChat = ({ currentChat, setCurrentChat, clearChat, sendMessage }) => {
   return (
     <div className={`${currentChat ? '' : 'user-interface-chat_inactive'} user-interface-chat_empty`}>
       {

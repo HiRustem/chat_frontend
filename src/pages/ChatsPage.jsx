@@ -8,7 +8,7 @@ import { closeDialog, openDialog } from '../components/Dialog/helpers/dialogHelp
 import { useNavigate } from 'react-router-dom'
 
 const ChatsPage = () => {
-  const settingsRef = useRef(null)
+  const userSettingsRef = useRef(null)
   const navigate = useNavigate()
   const [user, setUser] = useState(null)
 
@@ -35,11 +35,11 @@ const ChatsPage = () => {
         user ?
 
           <>
-            <Navbar profileInfo={{name: user.name, avatar: user.avatar}} openDialog={() => openDialog(settingsRef)} />
+            <Navbar profileInfo={{name: user.name, avatar: user.avatar}} openDialog={() => openDialog(userSettingsRef)} />
 
             <UserInterface user={user} setUser={setUser} />
 
-            <Dialog ref={settingsRef} children={ <ProfileSettings user={user} setUser={setUser} close={() => closeDialog(settingsRef)} /> } />
+            <Dialog ref={userSettingsRef} children={ <ProfileSettings user={user} setUser={setUser} close={() => closeDialog(userSettingsRef)} /> } />
           </>
 
         :

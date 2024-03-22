@@ -39,6 +39,8 @@ ol {
   border: none;
   background-color: transparent;
 
+  color: inherit;
+
   cursor: pointer;
 }
 

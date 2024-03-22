@@ -8,9 +8,15 @@ const UserInterfaceChatMessages = ({ currentChat }) => {
       {
         messages.length > 0 ?
 
-          <div className='user-interface-chat__messages'>
-        
-          </div>
+          <ul className='user-interface-chat__messages'>
+            {
+              messages.map(message => (
+                <li key={message.id}>
+                  <p>{message.content}</p>
+                </li>
+              ))
+            }
+          </ul>
 
         :
 
