@@ -2,6 +2,9 @@
   align-self: center;
   justify-self: center;
 
+  -webkit-align-self: center;
+  -webkit-justify-self: center;
+
   background-color: transparent;
 
   border: none;
