@@ -74,6 +74,7 @@
 .user-interface-chat__messages {
   display: grid;
   grid-template-rows: min-content;
+  grid-template-columns: 1fr;
 
   gap: 1rem;
 
