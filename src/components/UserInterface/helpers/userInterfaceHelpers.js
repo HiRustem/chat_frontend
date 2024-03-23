@@ -21,3 +21,9 @@ export const getCompanion = (userId, members) => {
 export const scrollToBottom = (ref) => {
   ref.current.scrollTop = ref.current.scrollHeight
 }
+
+export const checkUrlValidity = (url) => {
+  const regex = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
+
+  return regex.test(url)
+}

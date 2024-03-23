@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Avatar } from '../components'
+import MessageContent from './MessageContent'
 
 const TextMessageCard = ({ user, companion, message }) => {
   const { id, author, content, viewd } = message
@@ -13,7 +14,7 @@ const TextMessageCard = ({ user, companion, message }) => {
 
           <>
             <div className='text-message-card__text_author'>
-              {content}
+              <MessageContent type={message.type} content={message.content} />
             </div>
 
             <div className='text-message-card__avatar-container'>
@@ -29,7 +30,7 @@ const TextMessageCard = ({ user, companion, message }) => {
             </div>
 
             <div className='text-message-card__text_companion'>
-              {content}
+              <MessageContent type={message.type} content={message.content} />
             </div>
           </>
 

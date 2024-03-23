@@ -42,7 +42,7 @@
 
   background-color: var(--hover-accent-color);
 
-  padding: 1rem;
+  padding: clamp(0.5rem, 0.3239rem + 0.7512vw, 1rem);
 
   border-radius: 1rem;
 
@@ -68,7 +68,7 @@
 
   background-color: var(--hover-accent-color);
 
-  padding: 1rem;
+  padding: clamp(0.5rem, 0.3239rem + 0.7512vw, 1rem);
 
   border-radius: 1rem;
 
@@ -84,4 +84,10 @@
 
   border: 10px solid transparent;
   border-bottom: 10px solid var(--hover-accent-color);
+}
+
+.message-content__image {
+  inline-size: clamp(9.375rem, 1.6725rem + 32.8638vw, 31.25rem);
+
+  border-radius: 1rem;
 }

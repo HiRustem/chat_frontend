@@ -245,3 +245,33 @@
     max-width: 100%;
   }
 }
+
+.image-message-dialog-container {
+  display: grid;
+  grid-template-rows: min-content min-content;
+
+  gap: 1rem;
+
+  padding: 1rem;
+
+  background-color: #fff;
+}
+
+.image-message-dialog__button {
+  justify-self: end;
+}
+
+.image-message-dialog-container_active-preview {
+  grid-template-rows: min-content 1fr min-content;
+}
+
+.image-message-dialog__preview {
+  inline-size: clamp(18.75rem, 14.3486rem + 18.7793vw, 31.25rem);
+}
+
+.image-message-dialog__input-container {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+
+  gap: 1rem;
+}
