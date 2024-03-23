@@ -27,7 +27,6 @@ const UserInterface = ({ user, setUser }) => {
           setCurrentCompanion(result.companion)
         })
         .catch(error => console.log(error))
-      console.log(status)
     } else {
       console.log(status)
     }

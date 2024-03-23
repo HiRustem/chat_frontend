@@ -7,7 +7,9 @@ const UserInterfaceChatMessages = ({ user, companion, currentChat }) => {
   const { messages } = currentChat
 
   useEffect(() => {
-    scrollToBottom(chatRef)
+    if (messages.length > 0) {
+      scrollToBottom(chatRef)
+    }
   }, [messages])
   
   return (
