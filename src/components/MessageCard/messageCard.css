@@ -1,14 +1,23 @@
 .text-message-card {
   display: grid;
-  grid-template-columns: 1fr clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
 
   gap: 1rem;
-
-  justify-content: end;
 
   inline-size: 100%;
 
   align-items: end;
+}
+
+.text-message-card_author {
+  grid-template-columns: 1fr clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
+
+  justify-content: end;
+}
+
+.text-message-card_companion {
+  grid-template-columns: clamp(2rem, 1.2958rem + 3.0047vw, 4rem) 1fr;
+
+  justify-content: start;
 }
 
 .text-message-card__avatar-container {
@@ -25,7 +34,7 @@
   block-size: 100%;
 }
 
-.text-message-card__text {
+.text-message-card__text_author {
   position: relative;
 
   min-block-size: 20%;
@@ -40,12 +49,38 @@
   font-size: smaller;
 }
 
-.text-message-card__text::after {
+.text-message-card__text_author::after {
   content: '';
 
   position: absolute;
   bottom: .2rem;
   right: -.5rem;
+
+  border: 10px solid transparent;
+  border-bottom: 10px solid var(--hover-accent-color);
+}
+
+.text-message-card__text_companion {
+  position: relative;
+
+  min-block-size: 20%;
+  max-block-size: 100%;
+
+  background-color: var(--hover-accent-color);
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+
+  font-size: smaller;
+}
+
+.text-message-card__text_companion::before {
+  content: '';
+
+  position: absolute;
+  bottom: .2rem;
+  left: -.5rem;
 
   border: 10px solid transparent;
   border-bottom: 10px solid var(--hover-accent-color);

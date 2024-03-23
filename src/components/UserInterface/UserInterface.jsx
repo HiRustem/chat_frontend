@@ -87,7 +87,7 @@ const UserInterface = ({ user, setUser }) => {
   return (
     <div className='user-interface'>
       <div className='user-interface__chat'>
-        <UserInterfaceChatsBar user={user} currentChat={currentChat} createChat={createChat} setChat={setChat} />
+        <UserInterfaceChatsBar user={user} setUser={setUser} currentChat={currentChat} createChat={createChat} setChat={setChat} />
 
         <UserInterfaceChat isLoading={isLoading} user={user} companion={currentCompanion} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
       </div>

@@ -18,7 +18,7 @@ const UserInterfaceChatMessages = ({ user, companion, currentChat }) => {
           <ul className='user-interface-chat__messages' ref={chatRef}>
             {
               messages.map(message => (
-                <li key={message.id} className='user-interface-chat__messages-item'>
+                <li key={message.id} className={`${user.id === message.author ? 'user_message' : 'companion_message'} user-interface-chat__messages-item`}>
                   <UserInterfaceChatMessagesCard user={user} companion={companion} message={message} />
                 </li>
               ))

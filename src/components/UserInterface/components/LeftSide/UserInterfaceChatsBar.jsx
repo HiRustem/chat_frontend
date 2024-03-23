@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { SearchBar } from '../../../components'
 import UserInterfaceUsersList from './UserInterfaceUsersList'
-import { findUserByUsername } from '../../../../api/user'
+import { findUserById, findUserByUsername } from '../../../../api/user'
 import UserInterfaceChatsList from './UserInterfaceChatsList'
 import { getChat } from '../../../../api/chat'
 
-const UserInterfaceChatsBar = ({ user, currentChat, createChat, setChat }) => {
+const UserInterfaceChatsBar = ({ user, setUser, currentChat, createChat, setChat }) => {
   const { chats } = user
 
   const [isLoading, setIsLoading] = useState(false)
@@ -35,6 +35,23 @@ const UserInterfaceChatsBar = ({ user, currentChat, createChat, setChat }) => {
 
     getChatsData()
   }, [])
+
+  // useEffect(() => {
+  //   async function getChats() {
+  //     await findUserById(user.id)
+  //       .then(result => {
+  //         if (chatsArray.length !== result.chats.length) {
+  //           setChatsArray(result.chats)
+  //           console.log(result.chats)
+  //         } else {
+  //           console.log('chats up to date')
+  //         }
+  //         console.log(result)
+  //       })
+  //   }
+
+  //   setInterval(getChats, 5000)
+  // }, [])
 
   return (
     <div className={`${currentChat ? 'user-interface__chats-bar_inactive' : ''} user-interface__chats-bar`}>

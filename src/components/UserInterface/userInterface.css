@@ -91,8 +91,14 @@
   display: flex;
 
   inline-size: 100%;
+}
 
+.user_message {
   justify-content: end;
+}
+
+.companion_message {
+  justify-content: start;
 }
 
 .user-interface-chat__messages-card {
