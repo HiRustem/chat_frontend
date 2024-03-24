@@ -1,33 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { searchFunction } from '../UserInterface/helpers/userInterfaceFunctions'
 
-const SearchBar = ({ searchFunction, setResultArray, setIsLoading }) => {
+const SearchBar = ({ setResultArray, setIsLoading }) => {
   const [searchQuery, setSearchQuery] = useState('')
 
   const search = async (event) => {
-    setSearchQuery(event.target.value)
+    const { value } = event.target
 
-    if (searchQuery.length > 2) {
+    setSearchQuery(value)
+
+    if (value.length > 2) {
       setIsLoading(true)
-      const array = await searchFunction(searchQuery)
-        .then(result => {
-          if (Array.isArray(result) && result.length > 0) {
-            return result
-          } else {
-            return []
-          }
-        })
-        .catch(error => console.log(error))
 
-      setResultArray(array)
+      await searchFunction(value, setResultArray)
+
       setIsLoading(false)
     }
-  }
 
-  useEffect(() => {
-    if (searchQuery.length === 0) {
+    if (value.length === 0) {
       setResultArray([])
     }
-  }, [searchQuery])
+  }
 
   return (
     <div className='search-bar-container'>

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { SearchBar } from '../../../components'
 import UserInterfaceUsersList from './UserInterfaceUsersList'
-import { findUserById, findUserByUsername } from '../../../../api/user'
 import UserInterfaceChatsList from './UserInterfaceChatsList'
-import { getChat } from '../../../../api/chat'
+import { getChats, getChatsData } from '../../helpers/userInterfaceFunctions'
 
 const UserInterfaceChatsBar = ({ user, currentChat, createChat, setChat }) => {
   const { chats } = user
@@ -13,58 +12,18 @@ const UserInterfaceChatsBar = ({ user, currentChat, createChat, setChat }) => {
   const [resultArray, setResultArray] = useState([])
 
   useEffect(() => {
-    async function getChatsData() {
-      setIsLoading(true)
-
-      const newChats = []
-
-      for (let chatId of chats) {
-        await getChat(chatId)
-          .then(result => {
-            if (Object.keys(result).length > 0) {
-              newChats.push(result)
-            }
-          })
-          .catch(error => console.log(error))
-      }
-  
-      setChatsArray(newChats)
-  
-      setIsLoading(false)
-    }
-
-    getChatsData()
+    setIsLoading(true)
+    getChatsData(chats, setChatsArray)
+    setIsLoading(false)
   }, [])
 
   useEffect(() => {
-    async function getChats() {
-      const oldChats = await findUserById(user.id)
-        .then(result => {
-          return result.chats
-        })
-
-      if (oldChats.length !== chats.length) {
-        const newChats = []
-
-        for (let chatId of oldChats) {
-          await getChat(chatId)
-            .then(result => {
-              if (Object.keys(result).length > 0) {
-                newChats.push(result)
-              }
-            })
-            .catch(error => console.log(error))
-        }
-
-        setChatsArray(newChats)
-      }
-    }
-    setInterval(getChats, 10000)
+    setInterval(() => getChats(user, chats, setChatsArray), 10000)
   }, [])
 
   return (
     <div className={`${currentChat ? 'user-interface__chats-bar_inactive' : ''} user-interface__chats-bar`}>
-      <SearchBar searchFunction={findUserByUsername} setResultArray={setResultArray} setIsLoading={setIsLoading} />
+      <SearchBar setResultArray={setResultArray} setIsLoading={setIsLoading} />
 
       {
         resultArray.length === 0 ?

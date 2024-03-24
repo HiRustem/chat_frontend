@@ -4,9 +4,7 @@ import UserInterfaceChat from './components/RightSide/UserInterfaceChat'
 import UserInterfaceChatsBar from './components/LeftSide/UserInterfaceChatsBar'
 import { checkUserChats } from './helpers/checkChatMembers'
 
-import { createNewChat, getChat, sendNewMessage } from '../../api/chat'
-import { createMessageObject, getCompanion } from './helpers/userInterfaceHelpers'
-import { findUserById, getUserInfo } from '../../api/user'
+import { createChatFunction, sendNewMessageFunction, setCurrentChatFunction } from './helpers/userInterfaceFunctions'
 
 const UserInterface = ({ user, setUser }) => {
   const [currentChat, setCurrentChat] = useState(null)
@@ -15,45 +13,18 @@ const UserInterface = ({ user, setUser }) => {
   const chatSettingsRef = useRef(null)
   
   const createChat = async (id, username) => {
-    const status = await checkUserChats(user.id, id, user.chats)
-    if (status) {
-      await createNewChat(user.username, username)
-        .then(result => {
-          const newChats = [...user.chats]
-          newChats.push(result.chat)
-    
-          setUser(prevData => ({...prevData, chats: newChats}))
-          setCurrentChat(result.chat)
-          setCurrentCompanion(result.companion)
-        })
-        .catch(error => console.log(error))
-    } else {
-      console.log(status)
-    }
+    await checkUserChats(user.id, id, user.chats)
+      .then(async () => {
+        await createChatFunction(user, username, setUser, setCurrentChat, setCurrentCompanion)
+      })
+      .catch(error => console.log(error))
   }
 
   const setChat = async (chatId) => {
-    if (!currentChat) {
+    if (!currentChat || currentChat.id !== chatId) {
       setIsLoading(true)
-      const companionId = await getChat(chatId)
-        .then(result => {
-          if (Object.keys(result).length > 0) {
-            setCurrentChat(result)
-
-            return getCompanion(user.id, result.members)
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
-
-      await findUserById(companionId)
-        .then(result => {
-          setCurrentCompanion(result)
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      
+      await setCurrentChatFunction(chatId, user, setCurrentChat, setCurrentCompanion)
 
       setIsLoading(false)
     }
@@ -66,21 +37,8 @@ const UserInterface = ({ user, setUser }) => {
 
   const sendMessage = async (messageType, messageInputRef) => {
     if (messageInputRef.current.value.length > 0) {
-      const { id } = currentChat
-
-      const messageObject = createMessageObject(messageType, messageInputRef.current.value, user.id)
-
-      await sendNewMessage(id, messageObject)
-        .then(result => {
-          setCurrentChat(prevValue => ({ ...prevValue, messages: result.messages }))
-
-          messageInputRef.current.value = ''
-        })
-        .catch(error => {
-          console.log(messageObject)
-          console.log(error)
-        })
-      }
+      await sendNewMessageFunction(currentChat.id, messageType, messageInputRef, user, setCurrentChat)
+    }
   }
 
   return (

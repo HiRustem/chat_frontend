@@ -1,16 +1,17 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import UserInterfaceChatMessagesCard from './UserInterfaceChatMessagesCard'
 import { scrollToBottom } from '../../helpers/userInterfaceHelpers'
 
 const UserInterfaceChatMessages = ({ user, companion, currentChat }) => {
   const chatRef = useRef(null)
+
   const { messages } = currentChat
 
   useEffect(() => {
-    if (messages.length > 0) {
-      scrollToBottom(chatRef)
+    if (messages.length > 0 && chatRef) {
+      setTimeout(() => scrollToBottom(chatRef), 100)
     }
-  }, [messages])
+  }, [currentChat, chatRef,  messages])
   
   return (
     <>
