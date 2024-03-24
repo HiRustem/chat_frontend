@@ -4,7 +4,7 @@ import UserInterfaceChatBar from './UserInterfaceChatBar'
 import UserInterfaceChatInput from './UserInterfaceChatInput'
 import { getMessagesFunction } from '../../helpers/userInterfaceFunctions'
 
-const UserInterfaceChat = ({ isLoading, user, companion, currentChat, setCurrentChat, clearChat, sendMessage }) => {
+const UserInterfaceChat = ({ isLoading, user, setUser, companion, currentChat, setCurrentChat, clearChat, sendMessage }) => {
   const [timerId, setTimerId] = useState(null)
 
   useEffect(() => {
@@ -25,9 +25,9 @@ const UserInterfaceChat = ({ isLoading, user, companion, currentChat, setCurrent
         currentChat && companion ?
 
           <div className='user-interface-chat'>
-            <UserInterfaceChatBar currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} />
+            <UserInterfaceChatBar user={user} setUser={setUser} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} />
 
-            <UserInterfaceChatMessages user={user} companion={companion} currentChat={currentChat} />
+            <UserInterfaceChatMessages user={user} companion={companion} currentChat={currentChat} setCurrentChat={setCurrentChat} />
 
             <UserInterfaceChatInput sendMessage={sendMessage} />
           </div>
@@ -47,6 +47,7 @@ const UserInterfaceChat = ({ isLoading, user, companion, currentChat, setCurrent
           </div>
 
     }
+
     </div>
   )
 }

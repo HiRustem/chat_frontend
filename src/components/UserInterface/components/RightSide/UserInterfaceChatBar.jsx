@@ -5,11 +5,26 @@ import { IoChevronBack } from 'react-icons/io5'
 import { Avatar, Dialog } from '../../../components'
 import ChatProfileDialog from './ChatProfile/ChatProfileDialog'
 import { closeDialog, openDialog } from '../../../Dialog/helpers/dialogHelpers'
+import { deleteChatFunction } from '../../helpers/userInterfaceFunctions'
 
-const UserInterfaceChatBar = ({ currentChat, setCurrentChat, clearChat }) => {
+const UserInterfaceChatBar = ({ user, setUser, currentChat, setCurrentChat, clearChat }) => {
   const chatProfileRef = useRef(null)
 
   const { name, avatar } = currentChat
+
+  const deleteChat = async () => {
+    await deleteChatFunction(currentChat.id)
+      .then(result => {
+        const oldChats = user.chats
+
+        const newChats = oldChats.filter(chat => parseInt(chat) !== result.id)
+
+        setUser(prevValue => ({ ...prevValue, chats: newChats }))
+        setCurrentChat(null)
+
+        closeDialog(chatProfileRef)
+      })
+  }
   
   return (
     <div className='user-interface-chat__bar'>
@@ -21,7 +36,7 @@ const UserInterfaceChatBar = ({ currentChat, setCurrentChat, clearChat }) => {
         <Avatar imageClassName='user-interface-chat__bar-avatar' url={avatar} />
       </button>
 
-      <Dialog children={ <ChatProfileDialog currentChat={currentChat} setCurrentChat={setCurrentChat} close={() => closeDialog(chatProfileRef)} /> } ref={chatProfileRef} />
+      <Dialog children={ <ChatProfileDialog currentChat={currentChat} setCurrentChat={setCurrentChat} deleteChat={deleteChat} close={() => closeDialog(chatProfileRef)} /> } ref={chatProfileRef} />
     </div>
   )
 }

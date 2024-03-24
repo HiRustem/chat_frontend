@@ -5,8 +5,9 @@ import { closeDialog, openDialog } from '../../../../Dialog/helpers/dialogHelper
 import ProfileSettingsAvatarDialog from '../../../../ProfileSettings/components/ProfileSettingsAvatarDialog'
 import ProfileSettingsButtons from '../../../../ProfileSettings/components/ProfileSettingsButtons'
 import ProfileSettingsNameDialog from '../../../../ProfileSettings/components/ProfileSettingsNameDialog'
+import { saveNewChatValue } from '../../../../ProfileSettings/helpers/profileSettingsHelpers'
 
-const ChatProfileDialog = ({ currentChat, setCurrentChat, close }) => {
+const ChatProfileDialog = ({ currentChat, setCurrentChat, deleteChat, close }) => {
   const imageDialogRef = useRef(null)
   const changeNameRef = useRef(null)
   const changeAvatarRef = useRef(null)
@@ -19,24 +20,24 @@ const ChatProfileDialog = ({ currentChat, setCurrentChat, close }) => {
   }
 
   const saveChatNameValue = async () => {
-    closeChatProfileDialog(changeNameRef)
+    await saveNewChatValue(changeNameRef, id, setCurrentChat)
   }
 
   const saveChatAvatarValue = async () => {
-    closeChatProfileDialog(changeAvatarRef)
+    await saveNewChatValue(changeAvatarRef, id, setCurrentChat)
   }
 
   return (
     <div className='chat-profile-dialog'>
       <button className='button chat-profile-dialog__close-button' onClick={close}><IoClose size={28} /></button>
 
-      <button className='chat-profile-dialog__avatar-container' onClick={() => openDialog(imageDialogRef)}>
+      <button className='button chat-profile-dialog__avatar-container' onClick={() => openDialog(imageDialogRef)}>
         <Avatar className='chat-profile-dialog__avatar' url={avatar} />
       </button>
 
-      <p>{name}</p>
+      <p className='chat-profile-dialog__text'>{name}</p>
 
-      <ProfileSettingsButtons openNameDialog={() => openDialog(changeNameRef)} nameText='Edit Name' openAvatarDialog={() => openDialog(changeAvatarRef)} avatarText='Edit Avatar' lastFunction={() => {}} lastText='Delete Chat' />
+      <ProfileSettingsButtons openNameDialog={() => openDialog(changeNameRef)} nameText='Edit Name' openAvatarDialog={() => openDialog(changeAvatarRef)} avatarText='Edit Avatar' lastFunction={deleteChat} lastText='Delete Chat' />
 
       <Dialog children={ <ImageDialog imageUrl={avatar} imageAlt='chat avatar' close={() => closeDialog(imageDialogRef)} /> } ref={imageDialogRef} />
 

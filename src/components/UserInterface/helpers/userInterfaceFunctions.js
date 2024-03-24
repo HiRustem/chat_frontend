@@ -1,4 +1,4 @@
-import { getChat, getNewMessages, sendNewMessage } from '../../../api/chat'
+import { createNewChat, deleteOldChat, deleteOldMessage, getChat, getNewMessages, sendNewMessage } from '../../../api/chat'
 import { findUserById, findUserByUsername } from '../../../api/user'
 import { createMessageObject, getCompanion } from './userInterfaceHelpers'
 
@@ -6,10 +6,10 @@ export const createChatFunction = async (user, username, setUser, setCurrentChat
   await createNewChat(user.username, username)
     .then(result => {
       const newChats = [...user.chats]
-      newChats.push(result.chat)
+      newChats.push(result.newChat.id)
     
       setUser(prevData => ({...prevData, chats: newChats}))
-      setCurrentChat(result.chat)
+      setCurrentChat(result.newChat)
       setCurrentCompanion(result.companion)
     })
     .catch(error => console.log(error))
@@ -98,10 +98,17 @@ export const getMessagesFunction = async (currentChat, setCurrentChat) => {
     })
 }
 
-export const saveNewChatName = async () => {
-
+export const deleteMessageFunction = async (chatId, messageId, setCurrentChat) => {
+  await deleteOldMessage(chatId, messageId)
+    .then(result => {
+      setCurrentChat(prevValue => ({ ...prevValue, messages: result }))
+    })
+    .catch(error => console.log(error))
 }
 
-export const saveNewChatAvatar = async () => {
-
+export const deleteChatFunction = async (chatId) => {
+  return await deleteOldChat(chatId)
+    .then(result => {
+      return result
+    })
 }

@@ -85,6 +85,9 @@
   bottom: -50%;
   left: 5%;
 
+  text-align: start;
+  align-items: start;
+
   font-size: smaller;
 
   color: var(--error-message-color);

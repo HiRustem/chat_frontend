@@ -288,9 +288,35 @@
 }
 
 .chat-profile-dialog {
+  display: grid;
+  grid-template-rows: min-content 4rem min-content min-content;
+
+  gap: 1rem;
+
   inline-size: clamp(18.75rem, 16.5493rem + 9.3897vw, 25rem);
 
   padding: 1rem;
 
   background-color: #fff;
+}
+
+.chat-profile-dialog__close-button {
+  justify-self: end;
+}
+
+.chat-profile-dialog__avatar-container {
+  block-size: 4rem;
+  inline-size: 4rem;
+
+  border-radius: 50%;
+
+  justify-self: center;
+
+  overflow: hidden;
+}
+
+.chat-profile-dialog__text {
+  justify-self: center;
+
+  font-size: x-large;
 }

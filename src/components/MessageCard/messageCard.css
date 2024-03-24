@@ -9,7 +9,7 @@
 }
 
 .text-message-card_author {
-  grid-template-columns: 1fr clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
+  grid-template-columns: min-content 1fr clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
 
   justify-content: end;
 }
@@ -27,6 +27,17 @@
   border-radius: 50%;
 
   overflow: hidden;
+}
+
+.text-message-card__buttons {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+.text-message-card__button {
+  font-size: smaller;
 }
 
 .text-message-card__avatar {

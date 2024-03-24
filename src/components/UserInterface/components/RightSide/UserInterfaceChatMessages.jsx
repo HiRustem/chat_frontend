@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import UserInterfaceChatMessagesCard from './UserInterfaceChatMessagesCard'
 import { scrollToBottom } from '../../helpers/userInterfaceHelpers'
 
-const UserInterfaceChatMessages = ({ user, companion, currentChat }) => {
+const UserInterfaceChatMessages = ({ user, companion, currentChat, setCurrentChat }) => {
   const chatRef = useRef(null)
 
   const { messages } = currentChat
@@ -22,7 +22,7 @@ const UserInterfaceChatMessages = ({ user, companion, currentChat }) => {
             {
               messages.map(message => (
                 <li key={message.id} className={`${user.id === message.author ? 'user_message' : 'companion_message'} user-interface-chat__messages-item`}>
-                  <UserInterfaceChatMessagesCard user={user} companion={companion} message={message} />
+                  <UserInterfaceChatMessagesCard user={user} currentChat={currentChat} setCurrentChat={setCurrentChat} companion={companion} message={message} />
                 </li>
               ))
             }

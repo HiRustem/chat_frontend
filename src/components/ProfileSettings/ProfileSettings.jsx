@@ -17,7 +17,7 @@ const ProfileSettings = ({ user, setUser, close }) => {
   const navigate = useNavigate()
 
   const { username, name, avatar } = user
-
+ 
   return (
     <div className='profile-settings'>
       <ProfileSettingsBar name={name} avatar={avatar} close={close} />

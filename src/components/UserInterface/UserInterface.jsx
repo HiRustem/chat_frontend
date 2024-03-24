@@ -10,7 +10,6 @@ const UserInterface = ({ user, setUser }) => {
   const [currentChat, setCurrentChat] = useState(null)
   const [currentCompanion, setCurrentCompanion] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  const chatSettingsRef = useRef(null)
   
   const createChat = async (id, username) => {
     await checkUserChats(user.id, id, user.chats)
@@ -46,7 +45,7 @@ const UserInterface = ({ user, setUser }) => {
       <div className='user-interface__chat'>
         <UserInterfaceChatsBar user={user} currentChat={currentChat} createChat={createChat} setChat={setChat} />
 
-        <UserInterfaceChat isLoading={isLoading} user={user} companion={currentCompanion} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
+        <UserInterfaceChat isLoading={isLoading} user={user} setUser={setUser} companion={currentCompanion} currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} sendMessage={sendMessage} />
       </div>
     </div>
   )

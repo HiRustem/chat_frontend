@@ -1,8 +1,9 @@
+import { editChatValue } from '../../../api/chat'
 import { saveUserValue } from '../../../api/user'
 import { closeDialog } from '../../Dialog/helpers/dialogHelpers'
-import { checkInputValidity, hideInputError } from '../../Form/helpers/formValidation'
+import { hideInputError } from '../../Form/helpers/formValidation'
 
-const getDialogInput = (dialogElement) => {
+export const getDialogInput = (dialogElement) => {
   const inputElement = dialogElement.querySelector('.form-input')
 
   return inputElement
@@ -11,8 +12,6 @@ const getDialogInput = (dialogElement) => {
 export const saveNewValue = async (ref, username, setUser) => {
   const inputElement = getDialogInput(ref.current)
   const { name, value } = inputElement
-
-  checkInputValidity(ref.current)
   
   if (inputElement.checkValidity()) {
     await saveUserValue(username, name, value)
@@ -26,6 +25,22 @@ export const saveNewValue = async (ref, username, setUser) => {
       })
       .catch(error => {
         console.log(error)
+      })
+  }
+}
+
+export const saveNewChatValue = async (ref, chatId, setCurrentChat) => {
+  const inputElement = getDialogInput(ref.current)
+  const { name, value } = inputElement
+  
+  if (inputElement.checkValidity()) {
+    await editChatValue(chatId, name, value)
+      .then(result => {
+        setCurrentChat(result.result)
+
+        inputElement.value = ''
+        hideInputError(inputElement)
+        closeDialog(ref)
       })
   }
 }

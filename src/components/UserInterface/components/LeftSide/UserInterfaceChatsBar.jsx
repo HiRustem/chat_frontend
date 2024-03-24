@@ -15,7 +15,7 @@ const UserInterfaceChatsBar = ({ user, currentChat, createChat, setChat }) => {
     setIsLoading(true)
     getChatsData(chats, setChatsArray)
     setIsLoading(false)
-  }, [])
+  }, [currentChat])
 
   useEffect(() => {
     setInterval(() => getChats(user, chats, setChatsArray), 10000)
