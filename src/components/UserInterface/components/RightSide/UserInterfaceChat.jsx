@@ -25,7 +25,7 @@ const UserInterfaceChat = ({ isLoading, user, companion, currentChat, setCurrent
         currentChat && companion ?
 
           <div className='user-interface-chat'>
-            <UserInterfaceChatBar currentChat={currentChat} clearChat={clearChat} />
+            <UserInterfaceChatBar currentChat={currentChat} setCurrentChat={setCurrentChat} clearChat={clearChat} />
 
             <UserInterfaceChatMessages user={user} companion={companion} currentChat={currentChat} />
 

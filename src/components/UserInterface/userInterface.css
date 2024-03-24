@@ -286,3 +286,11 @@
 
   gap: 1rem;
 }
+
+.chat-profile-dialog {
+  inline-size: clamp(18.75rem, 16.5493rem + 9.3897vw, 25rem);
+
+  padding: 1rem;
+
+  background-color: #fff;
+}

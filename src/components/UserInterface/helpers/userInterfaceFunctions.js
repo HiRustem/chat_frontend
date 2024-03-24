@@ -97,3 +97,11 @@ export const getMessagesFunction = async (currentChat, setCurrentChat) => {
       }
     })
 }
+
+export const saveNewChatName = async () => {
+
+}
+
+export const saveNewChatAvatar = async () => {
+
+}

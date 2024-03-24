@@ -22,7 +22,7 @@ const ProfileSettings = ({ user, setUser, close }) => {
     <div className='profile-settings'>
       <ProfileSettingsBar name={name} avatar={avatar} close={close} />
 
-      <ProfileSettingsButtons openNameDialog={() => openDialog(nameRef)} openAvatarDialog={() => openDialog(avatarRef)} signOut={() => signOut(navigate)} />
+      <ProfileSettingsButtons openNameDialog={() => openDialog(nameRef)} nameText='Edit Name' openAvatarDialog={() => openDialog(avatarRef)} avatarText='Edit Avatar' lastFunction={() => signOut(navigate)} lastText='Sign Out' />
 
       <Dialog ref={nameRef} children={
         <ProfileSettingsNameDialog close={() => closeDialog(nameRef)} save={() => saveNewValue(nameRef, username, setUser)} />

@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { IoChevronBack } from 'react-icons/io5'
 
-import { Avatar } from '../../../components'
+import { Avatar, Dialog } from '../../../components'
+import ChatProfileDialog from './ChatProfile/ChatProfileDialog'
+import { closeDialog, openDialog } from '../../../Dialog/helpers/dialogHelpers'
 
-const UserInterfaceChatBar = ({ currentChat, clearChat }) => {
+const UserInterfaceChatBar = ({ currentChat, setCurrentChat, clearChat }) => {
+  const chatProfileRef = useRef(null)
+
   const { name, avatar } = currentChat
   
   return (
@@ -13,9 +17,11 @@ const UserInterfaceChatBar = ({ currentChat, clearChat }) => {
 
       <p className='user-interface-chat__bar-name'>{name}</p>
 
-      <button className='button user-interface__chat__bar__image-button'>
+      <button className='button user-interface__chat__bar__image-button' onClick={() => openDialog(chatProfileRef)}>
         <Avatar imageClassName='user-interface-chat__bar-avatar' url={avatar} />
       </button>
+
+      <Dialog children={ <ChatProfileDialog currentChat={currentChat} setCurrentChat={setCurrentChat} close={() => closeDialog(chatProfileRef)} /> } ref={chatProfileRef} />
     </div>
   )
 }
