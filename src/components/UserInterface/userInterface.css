@@ -235,28 +235,6 @@
   font-size: small;
 }
 
-@media (width < 768px) {
-  .user-interface__chats-bar_inactive {
-    display: none;
-  }
-
-  .user-interface-chat_inactive {
-    display: none;
-  }
-
-  .user-interface__chat {
-    grid-template-columns: 1fr;
-  }
-
-  .user-interface__chats-bar {
-    border-right: none;
-  }
-
-  .user-interface-chat__messages-card {
-    max-width: 100%;
-  }
-}
-
 .image-message-dialog-container {
   display: grid;
   grid-template-rows: min-content min-content;
@@ -319,4 +297,26 @@
   justify-self: center;
 
   font-size: x-large;
+}
+
+@media (width < 768px) {
+  .user-interface__chats-bar_inactive {
+    display: none;
+  }
+
+  .user-interface-chat_inactive {
+    display: none;
+  }
+
+  .user-interface__chat {
+    grid-template-columns: 1fr;
+  }
+
+  .user-interface__chats-bar {
+    border-right: none;
+  }
+
+  .user-interface-chat__messages-card {
+    max-width: 100%;
+  }
 }

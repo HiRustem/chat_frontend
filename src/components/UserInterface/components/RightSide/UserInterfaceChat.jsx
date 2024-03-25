@@ -5,22 +5,24 @@ import UserInterfaceChatInput from './UserInterfaceChatInput'
 import { getMessagesFunction } from '../../helpers/userInterfaceFunctions'
 
 const UserInterfaceChat = ({ isLoading, user, setUser, companion, currentChat, setCurrentChat, clearChat, sendMessage }) => {
-  const [timerId, setTimerId] = useState(null)
+  const getMessages = async () => {
+    if (currentChat && companion) {
+      await getMessagesFunction(currentChat, setCurrentChat)
+    }
+  }
 
   useEffect(() => {
-    if (currentChat && companion) {
-      const newTimerId = setInterval(async () => {
-        await getMessagesFunction(currentChat, setCurrentChat)
-      }, 5000)
+    const newTimerId = setInterval(getMessages, 5000)
 
-      setTimerId(newTimerId)
-    } else {
-      clearInterval(timerId)
+    if (!currentChat && !companion) {
+      clearInterval(newTimerId)
     }
+
+    return () => clearInterval(newTimerId)
   }, [currentChat, companion])
 
   return (
-    <div className={`${currentChat ? '' : 'user-interface-chat_inactive'} user-interface-chat_empty`}>
+    <div className={`${currentChat && companion ? '' : 'user-interface-chat_inactive'} user-interface-chat_empty`}>
       {
         currentChat && companion ?
 

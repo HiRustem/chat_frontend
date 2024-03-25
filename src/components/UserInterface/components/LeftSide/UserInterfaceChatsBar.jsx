@@ -15,14 +15,14 @@ const UserInterfaceChatsBar = ({ user, currentChat, createChat, setChat }) => {
     setIsLoading(true)
     getChatsData(chats, setChatsArray)
     setIsLoading(false)
-  }, [currentChat])
+  }, [])
 
   useEffect(() => {
     setInterval(() => getChats(user, chats, setChatsArray), 10000)
   }, [])
 
   return (
-    <div className={`${currentChat ? 'user-interface__chats-bar_inactive' : ''} user-interface__chats-bar`}>
+    <div className={`${currentChat !== null ? 'user-interface__chats-bar_inactive' : ''} user-interface__chats-bar`}>
       <SearchBar setResultArray={setResultArray} setIsLoading={setIsLoading} />
 
       {

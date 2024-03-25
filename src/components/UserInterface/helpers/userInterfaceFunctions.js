@@ -90,12 +90,14 @@ export const searchFunction = async (searchQuery, setResultArray) => {
 }
 
 export const getMessagesFunction = async (currentChat, setCurrentChat) => {
-  await getNewMessages(currentChat.id)
+  if (currentChat) {
+    await getNewMessages(currentChat.id)
     .then(result => {
       if (currentChat.messages.length !== result.length) {
         setCurrentChat(prevValue => ({ ...prevValue, messages: result }))
       }
     })
+  }
 }
 
 export const deleteMessageFunction = async (chatId, messageId, setCurrentChat) => {

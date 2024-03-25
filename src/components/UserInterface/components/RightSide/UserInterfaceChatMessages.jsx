@@ -11,7 +11,7 @@ const UserInterfaceChatMessages = ({ user, companion, currentChat, setCurrentCha
     if (messages.length > 0 && chatRef) {
       setTimeout(() => scrollToBottom(chatRef), 100)
     }
-  }, [currentChat, chatRef,  messages])
+  }, [currentChat, chatRef, messages])
   
   return (
     <>
